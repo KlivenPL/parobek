@@ -11,7 +11,7 @@ is nudged to use them (see [F1.4](../epic-1-tiered-savings/F1.4-tier-guidance-in
 ## Features
 
 - [x] [F3.1 — MCP server skeleton](F3.1-mcp-server-skeleton.md)
-- [ ] [F3.2 — Digest tools](F3.2-digest-tools.md)
+- [x] [F3.2 — Digest tools](F3.2-digest-tools.md)
 
 ## Sequencing & dependencies
 

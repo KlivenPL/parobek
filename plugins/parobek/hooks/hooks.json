@@ -6,7 +6,8 @@
         "matcher": "*",
         "hooks": [
           { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/record-session.mjs", "timeout": 10 },
-          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/inject-summary.mjs", "timeout": 15 }
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/inject-summary.mjs", "timeout": 15 },
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/tier-guidance.mjs", "timeout": 10 }
         ]
       }
     ],

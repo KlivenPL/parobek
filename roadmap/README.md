@@ -59,7 +59,7 @@ See [tiers.md](tiers.md) for the full tier specification.
 - [x] F1.1 — Tier config foundation
 - [x] F1.2 — `/local-tier` command
 - [x] F1.3 — Command-tier warnings
-- [ ] F1.4 — Tier-guidance injection
+- [x] F1.4 — Tier-guidance injection
 
 ### Epic 2 — Local assist commands (NOW)
 - [x] F2.1 — `/local-commit`
@@ -68,7 +68,7 @@ See [tiers.md](tiers.md) for the full tier specification.
 
 ### Epic 3 — MCP toolbox (NOW)
 - [x] F3.1 — MCP server skeleton
-- [ ] F3.2 — Digest tools
+- [x] F3.2 — Digest tools
 
 ### Epic 4 — Local RAG / code index (NOW)
 - [ ] F4.1 — Provider embeddings

@@ -14,7 +14,7 @@ See [../tiers.md](../tiers.md) for the tier model this epic implements.
 - [x] [F1.1 — Tier config foundation](F1.1-tier-config-foundation.md)
 - [x] [F1.2 — `/local-tier` command](F1.2-local-tier-command.md)
 - [x] [F1.3 — Command-tier warnings](F1.3-command-tier-warnings.md)
-- [ ] [F1.4 — Tier-guidance injection](F1.4-tier-guidance-injection.md)
+- [x] [F1.4 — Tier-guidance injection](F1.4-tier-guidance-injection.md)
 
 ## Sequencing & dependencies
 
