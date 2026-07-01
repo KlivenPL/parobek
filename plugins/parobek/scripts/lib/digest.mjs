@@ -18,15 +18,28 @@ import {
 import { getDigestChunkPrompt } from './digest-prompt.mjs'
 
 /**
- * One chat call, hardened against degenerate (looping) output the same way
- * /local-compact is: if the response looks degenerate, retry ONCE with a higher
- * temperature and stronger anti-repeat penalties; if it still loops, throw rather
- * than return garbage. Unlike compaction the result is not persisted, but a looping
- * digest is still useless to hand back, so we refuse it.
+ * One chat call, hardened against the two ways a local model wastes a run: a
+ * degenerate (looping) response, and an empty response. Both get ONE retry with a
+ * higher temperature and stronger anti-repeat penalties (the same escalation
+ * /local-compact uses):
+ *   - degenerate output is returned by `chat`, so we detect it with looksDegenerate;
+ *   - an empty response is thrown by the provider as a LocalModelError with
+ *     code 'empty_response' (thinking models such as qwen3 emit it sporadically).
+ * Either way we retry once; if the retry still loops we throw rather than hand back
+ * garbage, and if it is empty again the provider's error propagates. Unlike
+ * compaction the result is not persisted, but a useless digest is not worth
+ * returning either.
  */
 async function callModelHardened(config, messages) {
-  const out = await chat(config, messages)
-  if (!looksDegenerate(out)) return out
+  let out
+  try {
+    out = await chat(config, messages)
+    if (!looksDegenerate(out)) return out
+    // Degenerate: fall through to the single hardened retry below.
+  } catch (err) {
+    // Empty response: fall through to the same retry; anything else is fatal.
+    if (!(err instanceof LocalModelError) || err.code !== 'empty_response') throw err
+  }
 
   const harder = {
     ...config,

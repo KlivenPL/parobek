@@ -68,6 +68,34 @@ test('runDigest: retries once on degenerate output, returns the good retry', asy
   }
 })
 
+test('runDigest: retries once on an empty response, returns the good retry', async () => {
+  // Thinking models sporadically return empty content; the first call is empty,
+  // the retry is clean. Empty content ('') makes the provider throw empty_response.
+  const mock = await startMockServer({ chatSequence: ['', 'CLEAN'] })
+  try {
+    const out = await runDigest(cfg(mock.url), 'input', { finalPrompt: 'Do it.' })
+    assert.equal(out, 'CLEAN')
+    const calls = chatCalls(mock)
+    assert.equal(calls.length, 2)
+    // The retry used the stronger anti-repeat tier, same as the degeneration path.
+    assert.equal(calls[1].body.frequency_penalty, 0.6)
+  } finally {
+    await mock.close()
+  }
+})
+
+test('runDigest: propagates when the response is empty twice', async () => {
+  const mock = await startMockServer({ chatSequence: ['', ''] })
+  try {
+    await assert.rejects(
+      () => runDigest(cfg(mock.url), 'input', { finalPrompt: 'x' }),
+      (err) => err instanceof LocalModelError && err.code === 'empty_response',
+    )
+  } finally {
+    await mock.close()
+  }
+})
+
 test('runDigest: throws when the model loops twice', async () => {
   const degenerate = Array.from({ length: 20 }, () => 'LOOP LOOP LOOP').join('\n')
   const mock = await startMockServer({ chatSequence: [degenerate, degenerate] })

@@ -29,10 +29,13 @@ export function antiRepeat(opts = {}) {
 
 /** Error thrown when the local server cannot be reached or returns an error. */
 export class LocalModelError extends Error {
-  constructor(message, { cause } = {}) {
+  constructor(message, { cause, code } = {}) {
     super(message)
     this.name = 'LocalModelError'
     if (cause) this.cause = cause
+    // Optional machine-readable discriminator (e.g. 'empty_response') so callers
+    // can react to a specific failure without matching on the message string.
+    if (code) this.code = code
   }
 }
 
@@ -203,6 +206,7 @@ export async function baseChat(
   if (typeof content !== 'string' || content.trim() === '') {
     throw new LocalModelError(
       'Local model returned an empty response (no summary text).',
+      { code: 'empty_response' },
     )
   }
   return content
