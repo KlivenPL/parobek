@@ -1,9 +1,12 @@
 # 🥔 Parobek
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Node ≥18](https://img.shields.io/badge/node-%E2%89%A518-brightgreen)
-![status: MVP](https://img.shields.io/badge/status-MVP-blue)
-![Anthropic: unofficial](https://img.shields.io/badge/Anthropic-unofficial-lightgrey)
+<p align="center"><strong>A plugin for <a href="https://code.claude.com">Claude Code</a></strong> — a local-LLM helper that does the grunt work so you spend fewer Anthropic tokens.</p>
+
+<p align="center">
+  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  <img alt="Node ≥18" src="https://img.shields.io/badge/node-%E2%89%A518-brightgreen">
+  <img alt="status: MVP" src="https://img.shields.io/badge/status-MVP-blue">
+</p>
 
 > *„Ano, najon się parobek do dworu. Chłop robotny, grosza darmo nie weźnie —
 > od świtu młóci, rąbie i znosi, a jegomość niech ino o wielgich rzeczach duma."*
@@ -23,10 +26,15 @@ go to Anthropic, unchanged.
 
 ## Install
 
+Install straight from GitHub — the repo is its own plugin marketplace (it is not
+listed in any curated marketplace):
+
 ```text
-/plugin marketplace add <owner>/parobek     # or a local path to this repo
+/plugin marketplace add https://github.com/KlivenPL/parobek.git
 /plugin install parobek@parobek
 ```
+
+(You can also point `marketplace add` at a local clone of this repo.)
 
 Then restart Claude Code (hooks load at session start) and pick a model:
 
@@ -35,7 +43,7 @@ Then restart Claude Code (hooks load at session start) and pick a model:
 /local-model <model-id>
 ```
 
-## Co parobek robi (what the hand does)
+## What the hand does
 
 | Command | What it does |
 |---------|--------------|
@@ -56,7 +64,7 @@ context in place; `/clear` + hook injection is the supported, safe path. Opening
 new window never triggers injection (guards: `source === 'clear'` + cwd + TTL +
 single-consume + visible label).
 
-## Jak to chodzi (how it works)
+## How it works
 
 The *parobek* (local model) does the grunt work — summaries and digests — while the
 *gospodarz* (Claude) keeps thinking about the big things. Anything the local model
