@@ -1,0 +1,17 @@
+{
+  "name": "parobek",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Parobek — a local-LLM helper for Claude Code that offloads assistive tasks (such as context compaction) to a local model to reduce Anthropic token usage. Independent, unofficial; not affiliated with Anthropic.",
+  "license": "MIT",
+  "author": {
+    "name": "Oskar Hacel",
+    "email": "oskar.hacel@gmail.com"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node --test \"scripts/__tests__/**/*.test.mjs\""
+  }
+}

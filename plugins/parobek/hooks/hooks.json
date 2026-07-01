@@ -1,0 +1,23 @@
+{
+  "description": "Parobek: record transcript path; warn as context nears the local limit; inject the local summary after /clear",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/record-session.mjs", "timeout": 10 },
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/inject-summary.mjs", "timeout": 15 }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/record-session.mjs", "timeout": 10 },
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context-watch.mjs", "timeout": 10 }
+        ]
+      }
+    ]
+  }
+}

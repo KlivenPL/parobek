@@ -1,0 +1,18 @@
+# Local reference material — never committed
+refs/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+
+# Local runtime state is stored in ~/.claude/parobek/, not in the repo,
+# but ignore any accidental local artifacts:
+*.local
+.env

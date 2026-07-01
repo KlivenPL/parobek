@@ -1,0 +1,15 @@
+{
+  "name": "parobek",
+  "description": "Your local farmhand for Claude Code: a local LLM (via LM Studio or any OpenAI-compatible server) does the grunt work behind /local-* commands to reduce Anthropic token usage. The local model is used only by /local-* commands, never for normal prompts.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Oskar Hacel",
+    "email": "oskar.hacel@gmail.com"
+  },
+  "mcpServers": {
+    "local": {
+      "command": "node",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/mcp/server.mjs"]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "parobek",
+  "version": "0.1.0",
+  "description": "Parobek marketplace — a local-LLM helper for Claude Code that offloads assistive tasks to a local model (LM Studio or any OpenAI-compatible server) to reduce Anthropic token usage.",
+  "license": "MIT",
+  "owner": {
+    "name": "Oskar Hacel",
+    "email": "oskar.hacel@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "parobek",
+      "description": "Your local farmhand for Claude Code: a local LLM does the grunt work behind /local-* commands (e.g. /local-compact, token-free context compaction) so you spend fewer Anthropic tokens.",
+      "version": "0.1.0",
+      "source": "./plugins/parobek",
+      "category": "productivity",
+      "license": "MIT"
+    }
+  ]
+}
