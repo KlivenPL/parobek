@@ -7,7 +7,7 @@ silent below its tier.
 
 ## Features
 
-- [ ] [F5.1 — File-reference pre-digest](F5.1-file-reference-predigest.md) — tier 2
+- [x] [F5.1 — File-reference pre-digest](F5.1-file-reference-predigest.md) — tier 2 (files only; URL pre-digest deferred)
 - [ ] [F5.2 — Big-read handling](F5.2-big-read-handling.md) — tier 2 nudge / tier 3 substitute
 - [ ] [F5.3 — Auto pre-compact](F5.3-auto-pre-compact.md) — tier 3
 

@@ -77,7 +77,7 @@ See [tiers.md](tiers.md) for the full tier specification.
 - [ ] F4.4 — `local_codesearch` tool
 
 ### Epic 5 — Auto-filter hooks (NOW)
-- [ ] F5.1 — File-reference pre-digest
+- [x] F5.1 — File-reference pre-digest (files only; URL pre-digest deferred)
 - [ ] F5.2 — Big-read handling
 - [ ] F5.3 — Auto pre-compact
 

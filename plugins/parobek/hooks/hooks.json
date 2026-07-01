@@ -16,7 +16,8 @@
         "matcher": "*",
         "hooks": [
           { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/record-session.mjs", "timeout": 10 },
-          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context-watch.mjs", "timeout": 10 }
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/context-watch.mjs", "timeout": 10 },
+          { "type": "command", "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/predigest.mjs", "timeout": 60 }
         ]
       }
     ]
